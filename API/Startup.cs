@@ -35,7 +35,7 @@ namespace API
 
             services.AddControllers();
             services.AddApplicationServices(_config);
-        
+            //services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +53,7 @@ namespace API
             app.UseRouting();
 
             app.UseCors("corspolicy");
+            //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
 
             app.UseAuthorization();
 

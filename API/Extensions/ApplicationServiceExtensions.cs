@@ -22,11 +22,10 @@ namespace API.Extensions
             });
             services.AddCors(opt =>
             {
-                opt.AddPolicy("corspolicy", policy =>
+                opt.AddPolicy(name: "corspolicy", policy =>
                 {
-                    policy.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin();
+                        //policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000","https://localhost:3000","http://localhost:3000/","https://localhost:3000/","http://localhost:5000/");
+                        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
             services.AddMediatR(typeof(List).Assembly);

@@ -4,6 +4,7 @@ import { Activity } from "../../../app/models/activity";
 
 interface Props {
 	activity: Activity | undefined;
+	submitting: boolean
 	closeForm: () => void;
 	createOrEdit: (activity: Activity) => void;
 }
@@ -11,6 +12,7 @@ const ActivityForm = ({
 	activity: selectedActivity,
 	closeForm,
 	createOrEdit,
+	submitting
 }: Props) => {
 	const initialState = selectedActivity ?? {
 		id: "",
@@ -57,6 +59,7 @@ const ActivityForm = ({
 					onChange={handleInputChage}
 				/>
 				<Form.Input
+					type="date"
 					placeholder="Date"
 					value={activity.date}
 					name="date"
@@ -75,6 +78,7 @@ const ActivityForm = ({
 					onChange={handleInputChage}
 				/>
 				<Button
+				loading={submitting}
 					floated="right"
 					positive
 					type="submit"
